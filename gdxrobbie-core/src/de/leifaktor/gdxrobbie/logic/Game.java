@@ -22,7 +22,7 @@ public class Game {
 	
 	public void reset() {
 		currentRoom = episode.getStartingPosition().room;
-		player = new Player(currentRoom, episode.getStartingPosition().x, episode.getStartingPosition().y);
+		player = new Player(currentRoom, episode.getStartingPosition().x, episode.getStartingPosition().y, episode.getStartingPosition().z);
 	}
 	
 	private void initRoom() {

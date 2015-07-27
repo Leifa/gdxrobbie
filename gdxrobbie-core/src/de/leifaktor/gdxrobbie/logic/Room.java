@@ -15,7 +15,7 @@ public class Room {
 	 *  Der Floor, in dem der Raum sich befindet
 	 */
 
-	//private Floor floor;
+	private Floor floor;
 	
 	/**
 	 *  Position innerhalb des Floors (x von links nach rechts, y von oben nach unten)
@@ -35,12 +35,12 @@ public class Room {
 	private String name;
 	
 	/**
-	 * Der Untergrund des Raumes.
+	 * Die Layer des Raumes
 	 * Das Array hat Länge width*height, die Tiles werden zeilenweise, von links nach rechts,
 	 * von oben nach unten aufgezählt.
 	 */
 	
-	private Tile[] tiles;
+	private ArrayList<RoomLayer> layers;
 	
 	/**
 	 * Eine Liste von Actors in diesem Raum
@@ -65,10 +65,10 @@ public class Room {
 	public Room(int width, int height, Floor floor, int x, int y) {
 		this.width = width;
 		this.height = height;
-		//this.floor = floor;
+		this.floor = floor;
 		this.x = x;
 		this.y = y;
-		this.tiles = new Tile[width*height];
+		this.layers = new ArrayList<RoomLayer>();				
 		this.actors = new ArrayList<Entity>();
 		emptyRoom();
 	}
@@ -78,9 +78,8 @@ public class Room {
 	 */
 	
 	private void emptyRoom() {
-		for (int i=0; i < tiles.length; i++) {
-			tiles[i] = Tile.EMPTY_TILE;
-		}
+		layers.clear();
+		layers.add(new RoomLayer(width, height));
 		this.actors.clear();
 	}
 	
@@ -124,16 +123,12 @@ public class Room {
 		return name;
 	}
 	
-	public void setTile(int x, int y, Tile tile) {
-		tiles[width*y+x] = tile;
-	}
-	
-	public Tile getTile(int x, int y) {
-		return tiles[width*y+x];
-	}
-	
 	public ArrayList<Entity> getActors() {
 		return actors;
+	}
+	
+	public ArrayList<RoomLayer> getLayers() {
+		return layers;
 	}
 
 }

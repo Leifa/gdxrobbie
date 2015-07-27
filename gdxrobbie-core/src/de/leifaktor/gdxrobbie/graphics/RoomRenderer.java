@@ -15,7 +15,7 @@ public class RoomRenderer {
 	public void render(Room r) {
 		for (int x = 0; x < r.getWidth(); x++) {
 			for (int y = 0; y < r.getHeight(); y++) {
-				r.getTile(x, y);
+				// RENDER
 			}
 		}
 	}

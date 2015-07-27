@@ -19,6 +19,12 @@ public abstract class Entity {
 	protected int y;
 	
 	/**
+	 * THe Z-Coordinate is the number of the layer this entity is currently in.
+	 */
+	
+	protected int z;
+	
+	/**
 	 * The room the entity is currently in
 	 */
 	
@@ -71,12 +77,13 @@ public abstract class Entity {
 	public static final int WALKING = 1;
 	public static final int WALKING_FINISHED = 2;
 	
-	public Entity(Room r, int x, int y) {
+	public Entity(Room r, int x, int y, int z) {
 		this.room = r;
 		this.x = x;
 		this.actualX = x;
 		this.y = y;
 		this.actualY = y;
+		this.z = z;
 		this.state = STANDING;
 	}
 	
@@ -111,10 +118,10 @@ public abstract class Entity {
 			}
 		}
 		if (state == WALKING_FINISHED) {
-			this.hasLeft(room.getTile(x, y));
+			this.hasLeft(room.getLayers().get(z).getTile(x, y));
 			x += Direction.DIR_X[direction];
 			y += Direction.DIR_X[direction];	
-			this.walkedOn(room.getTile(x, y));
+			this.walkedOn(room.getLayers().get(z).getTile(x, y));
 		}
 	}
 	

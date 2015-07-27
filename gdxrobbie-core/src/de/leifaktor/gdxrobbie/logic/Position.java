@@ -10,14 +10,18 @@ package de.leifaktor.gdxrobbie.logic;
 
 public class Position {
 	
-	public Position(Room room, int x, int y) {
-		this.room = room;
-		this.x = x;
-		this.y = y;
-	}
-
 	public Room room;
 	public int x;
 	public int y;
+	public int z;
+	
+	public Position(Room room, int x, int y, int z) {
+		this.room = room;
+		this.x = x;
+		this.y = y;
+		this.z = z;
+	}
+
+
 	
 }

@@ -4,8 +4,8 @@ import de.leifaktor.gdxrobbie.logic.Room;
 
 public class Player extends Entity {
 
-	public Player(Room r, int x, int y) {
-		super(r, x, y);
+	public Player(Room r, int x, int y, int z) {
+		super(r, x, y, z);
 	}
 
 	@Override
